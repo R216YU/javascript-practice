@@ -214,3 +214,37 @@ console.log(pastaCalculator)
 for (const key in pastaCalculator) {
     console.log(key)
 }
+
+
+
+const payCalc = {
+    lemon: 200,
+    member: 5,
+}
+
+Object.defineProperty(payCalc, "total", {
+    configurable: true,
+    enumerable: true,
+    get() {
+        return this.lemon * this.member;
+    },
+    set(newValue) {
+        return this.member = newValue / this.lemon;
+    }
+})
+
+console.log(Object.getOwnPropertyDescriptor(payCalc, "total"))
+
+
+console.log("------------------------------");
+
+const blog = {
+    title: "how rally plays",
+    author: "r216"
+};
+
+console.log(Object.isExtensible(blog));
+
+Object.preventExtensions(blog); // < Object.seal(blog) < Object.freeze(blog) : 強力さが違う
+console.log(Object.isExtensible(blog));
+
